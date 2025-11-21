@@ -1,0 +1,21 @@
+<Application
+    x:Class="WifiManagerWPF.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    StartupUri="MainWindow.xaml">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- bring in the wifi icons so the converter can find
+                 WifiZeroIcon / WifiLowIcon / WifiHighIcon / WifiFullIcon -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="WifiIcons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- your shared app-level resources -->
+            <Color x:Key="PrimaryColor">#0F1724</Color>
+            <SolidColorBrush x:Key="PrimaryBackground" Color="{StaticResource PrimaryColor}" />
+            <!--  other shared resources  -->
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

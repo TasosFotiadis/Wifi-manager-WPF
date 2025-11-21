@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- Use a Windows TFM so WPF XAML is compiled and generated code (InitializeComponent + named controls) is produced -->
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <OutputType>WinExe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Lang\**" />
+    <Compile Remove="Misc\**" />
+    <EmbeddedResource Remove="Lang\**" />
+    <EmbeddedResource Remove="Misc\**" />
+    <None Remove="Lang\**" />
+    <None Remove="Misc\**" />
+    <Page Remove="Lang\**" />
+    <Page Remove="Misc\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="ConnectWindow.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Remove="ConnectWindow.xaml" />
+    <Page Remove="WifiIcons.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro.IconPacks.Lucide" Version="6.2.1" />
+    <PackageReference Include="ManagedNativeWifi" Version="3.0.2" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="10.0.0" />
+    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.11" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WifiIcons.xaml" />
+  </ItemGroup>
+
+  <!-- Remove any direct Windows.winmd Reference entries from this file if present.
+       Do NOT add <Reference Include="Windows"> or a Windows.winmd HintPath. -->
+</Project>

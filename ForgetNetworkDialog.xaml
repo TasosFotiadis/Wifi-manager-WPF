@@ -1,0 +1,479 @@
+﻿<Window
+    x:Class="WifiManagerWPF.ForgetNetworkDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Forget Wi-Fi"
+    Width="800"
+    Height="450"
+    MaxWidth="800"
+    MaxHeight="450"
+    Background="Transparent"
+    Left="400"
+    ResizeMode="NoResize"
+    ShowInTaskbar="False"
+    SizeToContent="WidthAndHeight"
+    WindowStartupLocation="CenterOwner"
+    WindowStyle="None">
+
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryBackground" Color="#0F1724" />
+        <SolidColorBrush x:Key="CardBackground" Color="#050B16" />
+        <SolidColorBrush x:Key="CardBorder" Color="#223448" />
+        <SolidColorBrush x:Key="AccentBrush" Color="#2196F3" />
+        <SolidColorBrush x:Key="TextBrush" Color="#E6EEF8" />
+        <SolidColorBrush x:Key="SubTextBrush" Color="#B8C8D8" />
+        <SolidColorBrush x:Key="DangerBrush" Color="#EF5350" />
+
+        <LinearGradientBrush x:Key="DialogOutlineBrush" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Offset="0" Color="#4FD2FF" />
+            <GradientStop Offset="0.4" Color="#2C8CFF" />
+            <GradientStop Offset="1" Color="#00E8FF" />
+        </LinearGradientBrush>
+
+        <!--  Same base button as main window  -->
+        <Style x:Key="ConnectButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Padding" Value="22,14" />
+            <Setter Property="MinWidth" Value="180" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="BorderThickness" Value="0" />
+
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0" Color="#4FC3F7" />
+                        <GradientStop Offset="0.5" Color="#2196F3" />
+                        <GradientStop Offset="1" Color="#1565C0" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            x:Name="root"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="18">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="28"
+                                    Opacity="0.30"
+                                    ShadowDepth="0"
+                                    Color="#2196F3" />
+                            </Border.Effect>
+
+                            <Border.RenderTransform>
+                                <ScaleTransform x:Name="scale" ScaleX="1" ScaleY="1" />
+                            </Border.RenderTransform>
+
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <!--  hover  -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="root" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Offset="0" Color="#81D4FA" />
+                                            <GradientStop Offset="0.5" Color="#42A5F5" />
+                                            <GradientStop Offset="1" Color="#1E88E5" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="root" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect
+                                            BlurRadius="20"
+                                            Opacity="0.44"
+                                            ShadowDepth="0"
+                                            Color="#2196F3" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleX"
+                                                To="1.04"
+                                                Duration="0:0:0.10" />
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleY"
+                                                To="1.04"
+                                                Duration="0:0:0.10" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleX"
+                                                To="1"
+                                                Duration="0:0:0.10" />
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleY"
+                                                To="1"
+                                                Duration="0:0:0.10" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+
+                            <!--  pressed  -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="root" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Offset="0" Color="#1976D2" />
+                                            <GradientStop Offset="1" Color="#1565C0" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleX"
+                                                To="0.97"
+                                                Duration="0:0:0.05" />
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleY"
+                                                To="0.97"
+                                                Duration="0:0:0.05" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleX"
+                                                To="1"
+                                                Duration="0:0:0.08" />
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleY"
+                                                To="1"
+                                                Duration="0:0:0.08" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="root" Property="Opacity" Value="0.6" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--  Danger button: solid red, same animation feel as main buttons  -->
+        <Style
+            x:Key="DangerButton"
+            BasedOn="{StaticResource ConnectButtonStyle}"
+            TargetType="Button">
+            <!--  solid red gradient  -->
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0" Color="#EF5350" />
+                        <GradientStop Offset="0.5" Color="#E53935" />
+                        <GradientStop Offset="1" Color="#B71C1C" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <!--  red glow  -->
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                        BlurRadius="18"
+                        Opacity="0.5"
+                        ShadowDepth="0"
+                        Color="#EF5350" />
+                </Setter.Value>
+            </Setter>
+
+            <!--
+                same template/animation structure as ConnectButtonStyle,
+                just with red colors
+            -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            x:Name="root"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="18">
+                            <Border.RenderTransform>
+                                <ScaleTransform x:Name="scale" ScaleX="1" ScaleY="1" />
+                            </Border.RenderTransform>
+
+                            <ContentPresenter
+                                Margin="18,10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <!--  hover  -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="root" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Offset="0" Color="#FF867C" />
+                                            <GradientStop Offset="0.5" Color="#EF5350" />
+                                            <GradientStop Offset="1" Color="#E53935" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="root" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect
+                                            BlurRadius="24"
+                                            ShadowDepth="0"
+                                            Color="#B0EF5350" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleX"
+                                                To="1.05"
+                                                Duration="0:0:0.10" />
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleY"
+                                                To="1.05"
+                                                Duration="0:0:0.10" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleX"
+                                                To="1"
+                                                Duration="0:0:0.10" />
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleY"
+                                                To="1"
+                                                Duration="0:0:0.10" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+
+                            <!--  pressed  -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="root" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Offset="0" Color="#D32F2F" />
+                                            <GradientStop Offset="1" Color="#C62828" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleX"
+                                                To="0.96"
+                                                Duration="0:0:0.06" />
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleY"
+                                                To="0.96"
+                                                Duration="0:0:0.06" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleX"
+                                                To="1"
+                                                Duration="0:0:0.10" />
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="scale"
+                                                Storyboard.TargetProperty="ScaleY"
+                                                To="1"
+                                                Duration="0:0:0.10" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+
+                            <!--  disabled  -->
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="root" Property="Opacity" Value="0.6" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ExitButtonStyle" TargetType="Button">
+            <!--  size similar to normal window close button  -->
+            <Setter Property="Width" Value="30" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="FontSize" Value="18" />
+
+            <Setter Property="Background" Value="{StaticResource DangerBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBackground}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Hand" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            x:Name="root"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="root" Property="Background" Value="#FFEF5350" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="root" Property="Background" Value="#FFC62828" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style
+            x:Key="IconButton"
+            BasedOn="{StaticResource ConnectButtonStyle}"
+            TargetType="Button">
+            <Setter Property="MinWidth" Value="40" />
+            <Setter Property="MinHeight" Value="40" />
+            <Setter Property="Width" Value="40" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="4" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="168*" />
+            <ColumnDefinition Width="168*" />
+            <ColumnDefinition Width="101*" />
+            <ColumnDefinition Width="67*" />
+        </Grid.ColumnDefinitions>
+        <Border
+            x:Name="DialogBorder"
+            Grid.ColumnSpan="4"
+            Padding="30"
+            Background="{DynamicResource CardBackground}"
+            BorderBrush="{DynamicResource AccentBrush}"
+            BorderThickness="3"
+            CornerRadius="18">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="34"
+                    Opacity="0.95"
+                    ShadowDepth="0"
+                    Color="#2196F3" />
+            </Border.Effect>
+
+            <!--  your existing content  -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!--  Top row: title + X  -->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        x:Name="TxtTitle"
+                        Grid.Column="0"
+                        Margin="0,0,12,0"
+                        VerticalAlignment="Center"
+                        FontSize="26"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource TextBrush}"
+                        Text="Disconnect options" />
+
+                    <Button
+                        x:Name="BtnClose"
+                        Grid.Column="1"
+                        Click="CloseX_Click"
+                        Content="✕"
+                        Style="{StaticResource ExitButtonStyle}"
+                        ToolTip="Close" />
+                </Grid>
+
+                <!--  Message  -->
+                <TextBlock
+                    x:Name="TxtMessage"
+                    Grid.Row="1"
+                    Margin="0,20,0,30"
+                    FontSize="20"
+                    Foreground="{StaticResource SubTextBrush}"
+                    Text=""
+                    TextWrapping="Wrap" />
+
+                <!--  Buttons  -->
+                <StackPanel
+                    Grid.Row="2"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        x:Name="disconnectButton"
+                        Margin="0,0,18,0"
+                        Click="Disconnect_Click"
+                        Content="Disconnect"
+                        Style="{StaticResource ConnectButtonStyle}" />
+                    <Button
+                        x:Name="disconnectForgetButton"
+                        Click="Forget_Click"
+                        Content="Disconnect and Forget"
+                        Style="{StaticResource DangerButton}" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+
+
+</Window>

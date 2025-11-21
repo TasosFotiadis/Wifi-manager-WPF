@@ -1,0 +1,113 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--  0–25%  -->
+    <Viewbox
+        x:Key="WifiZeroIcon"
+        Width="28"
+        Height="28"
+        Stretch="Uniform">
+        <Canvas Width="24" Height="24">
+            <Path
+                Data="M12 20h.01"
+                Stroke="#2196F3"
+                StrokeEndLineCap="Round"
+                StrokeLineJoin="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="2.5" />
+        </Canvas>
+    </Viewbox>
+
+    <!--  25–50%  -->
+    <Viewbox
+        x:Key="WifiLowIcon"
+        Width="28"
+        Height="28"
+        Stretch="Uniform">
+        <Canvas Width="24" Height="24">
+            <Path
+                Data="M12 20h.01"
+                Stroke="#2196F3"
+                StrokeEndLineCap="Round"
+                StrokeLineJoin="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="2.5" />
+            <Path
+                Data="M8.5 16.429a5 5 0 0 1 7 0"
+                Stroke="#2196F3"
+                StrokeEndLineCap="Round"
+                StrokeLineJoin="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="2.5" />
+        </Canvas>
+    </Viewbox>
+
+    <!--  50–75%  -->
+    <Viewbox
+        x:Key="WifiHighIcon"
+        Width="28"
+        Height="28"
+        Stretch="Uniform">
+        <Canvas Width="24" Height="24">
+            <Path
+                Data="M12 20h.01"
+                Stroke="#2196F3"
+                StrokeEndLineCap="Round"
+                StrokeLineJoin="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="2.5" />
+            <Path
+                Data="M5 12.859a10 10 0 0 1 14 0"
+                Stroke="#2196F3"
+                StrokeEndLineCap="Round"
+                StrokeLineJoin="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="2.5" />
+            <Path
+                Data="M8.5 16.429a5 5 0 0 1 7 0"
+                Stroke="#2196F3"
+                StrokeEndLineCap="Round"
+                StrokeLineJoin="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="2.5" />
+        </Canvas>
+    </Viewbox>
+
+    <!--  75–100%  -->
+    <Viewbox
+        x:Key="WifiFullIcon"
+        Width="28"
+        Height="28"
+        Stretch="Uniform">
+        <Canvas Width="24" Height="24">
+            <Path
+                Data="M12 20h.01"
+                Stroke="#2196F3"
+                StrokeEndLineCap="Round"
+                StrokeLineJoin="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="2.5" />
+            <Path
+                Data="M2 8.82a15 15 0 0 1 20 0"
+                Stroke="#2196F3"
+                StrokeEndLineCap="Round"
+                StrokeLineJoin="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="2.5" />
+            <Path
+                Data="M5 12.859a10 10 0 0 1 14 0"
+                Stroke="#2196F3"
+                StrokeEndLineCap="Round"
+                StrokeLineJoin="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="2.5" />
+            <Path
+                Data="M8.5 16.429a5 5 0 0 1 7 0"
+                Stroke="#2196F3"
+                StrokeEndLineCap="Round"
+                StrokeLineJoin="Round"
+                StrokeStartLineCap="Round"
+                StrokeThickness="2.5" />
+        </Canvas>
+    </Viewbox>
+
+</ResourceDictionary>
