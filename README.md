@@ -70,6 +70,13 @@ A modern, fully-localized Wi-Fi management application built in C# / .NET WPF, f
   
   `AppLanguage.SetLanguage("en");      // English`
 * **Known Limitations**
-  * WPF ItemTemplates do not expose named controls at design time
+  * WPF `ItemTemplates` do not expose named controls at design time
   * Windows Wi-Fi events are polled every 2 seconds (netsh limitation)
   * Connecting to hidden networks must be done manually
+
+* **Credits**
+  Developed with care using:
+  * C#
+  * WPF
+  * SQLite
+  * ManagedNativeWifi
