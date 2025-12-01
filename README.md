@@ -48,7 +48,7 @@ A modern, fully-localized Wi-Fi management application built in C# / .NET WPF, f
 
 | ------------- | ----------------------------------- |
 | UI            | **WPF / XAML**                      |
-| Logic         | **C# .NET 6/7**                     |
+| Logic         | **C# .NET 8**                     |
 | Wi-Fi backend | **ManagedNativeWifi**, **netsh**    |
 | Persistence   | **SQLite**                          |
 | Icons         | **MahApps.Metro.IconPacks**         |
