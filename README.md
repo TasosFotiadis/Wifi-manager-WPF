@@ -79,5 +79,5 @@ A modern, fully-localized Wi-Fi management application built in C# / .NET WPF, f
   Developed with care using:
   * C#
   * WPF
-  * SQLite
+  * SQLite (using DB Browser for SQLite)
   * ManagedNativeWifi
