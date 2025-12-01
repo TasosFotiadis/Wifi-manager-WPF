@@ -75,6 +75,7 @@ A modern, fully-localized Wi-Fi management application built in C# / .NET WPF, f
   * Connecting to hidden networks must be done manually
 
 * **Credits**
+  
   Developed with care using:
   * C#
   * WPF
